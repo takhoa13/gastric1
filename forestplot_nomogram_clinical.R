@@ -21,11 +21,9 @@ library(IOBR)
 
 risk_scores<-readRDS('risk_score_list_for_clinical.rds')
 tcga_info<-readRDS('tcga_tumor_info.rds')
-#gse37_info<-readRDS('gse84437_sampleInfo.rds')
-#gse33_info<-readRDS('gse84433_sampleInfo.rds')
 gse59_info<-readRDS('gse15459_sampleInfo.rds')
 
-gse26_info<-readRDS('gse84426_sampleInfo.rds')
+gse53_info<-readRDS('gse26253_sampleInfo.rds')
 
 #### subset tcga_info
 tcga_info<-tcga_info[rownames(risk_scores$tcga),]
@@ -37,10 +35,8 @@ tcga_info<-tcga_info[rownames(risk_scores$tcga),]
 # List of info dataframes
 info_df <- list(
   tcga_info = tcga_info,
- # gse37_info = gse37_info,
-  #gse33_info = gse33_info,
   gse59_info = gse59_info,
-  gse26_info = gse26_info
+  gse53_info = gse53_info
 )
 
 # Get the names to map them correctly
@@ -412,13 +408,13 @@ data3<-data2[complete.cases(data2$TP53),]
 
 data3<-data3[(data3$TP53 !='NA'),]
 
-ggboxplot(data3, x = "TP53", y = "RiskScore",
-          color = "TP53", palette =c("#00AFBB", "#E7B800", "#FC4E07","green4"),
-          add = "jitter", shape = "TP53")+ stat_compare_means(comparisons = my_comparisons)+ theme_pubr()+
+#ggboxplot(data3, x = "TP53", y = "RiskScore",
+#          color = "TP53", palette =c("#00AFBB", "#E7B800", "#FC4E07","green4"),
+#          add = "jitter", shape = "TP53")+ stat_compare_means(comparisons = my_comparisons)+ theme_pubr()+
   
-  theme(axis.text.x = element_text(size = 15,face = 'bold'),
-        axis.text.y = element_text(size=14),
+#  theme(axis.text.x = element_text(size = 15,face = 'bold'),
+#        axis.text.y = element_text(size=14),
      
-        strip.text = element_text(size = 10,face = 'bold'), # Enlarges the gene names in the facet labels
-        legend.title = element_text(size = 10), # Enlarges the legend title
-        legend.text = element_text(size = 15)) 
+#        strip.text = element_text(size = 10,face = 'bold'), # Enlarges the gene names in the facet labels
+#        legend.title = element_text(size = 10), # Enlarges the legend title
+#        legend.text = element_text(size = 15)) 
