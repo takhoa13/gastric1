@@ -28,9 +28,6 @@ gse53_info<-readRDS('gse26253_sampleInfo.rds')
 #### subset tcga_info
 tcga_info<-tcga_info[rownames(risk_scores$tcga),]
 
-### update risk_score
-# Assuming the dataframes are stored in a list called 'risk_scores'
-# and the individual '_info' dataframes are in separate variables.
 
 # List of info dataframes
 info_df <- list(
@@ -243,79 +240,6 @@ dev.off()
 
 
 
-##### Cach 2
-library(nomogramEx)
-mycol<-c("#A6CEE3","#1F78B4","#33adff","#2166AC")
-names(mycol) = c("dencol","boxcocl","obscol","spkcol")
-mycol<- as.list(mycol)
-pbccox <- coxph(formula = Surv(time,status) ~  age + sex + +stage+T_stage + 
-                  N_stage+M_stage + Risk , data = data)
-
-
-regplot(pbccox,
-        
-        #observation=data[2,], #
-        failtime = c(12,36,60), 
-        #observation = data[20,],
-        prfail = TRUE, 
-        showP = T, 
-        droplines = T,
-        center = T,
-        odds = F,
-        #colors = mycol, 
-        rank="sd",
-        points = T,
-        leftlabel=T,
-        title = 'Nomogram',
-        interval="confidence") #
-
-#Draw a calibration curve for verification
-f1<-cph(formula = Surv(time,status) ~  age + sex  +stage+T_stage_numeric + 
-          N_stage_numeric+M_stage_numeric + Risk,data=data,x=T,y=T,surv = T,
-        na.action=na.delete,time.inc = 12) 
-f3<-cph(formula = Surv(time,status) ~  age + sex  +stage+T_stage_numeric + 
-          N_stage_numeric+M_stage_numeric + Risk,data=data,x=T,y=T,surv = T,
-        na.action=na.delete,time.inc = 36) 
-f5<-cph(formula = Surv(time,status) ~  age + sex  +stage+T_stage_numeric + 
-          N_stage_numeric+M_stage_numeric + Risk,data=data,x=T,y=T,surv = T,
-        na.action=na.delete,time.inc = 60) 
-#Parameter m=50 means repeated calculation of 50 samples in each group
-cal1<-calibrate(f1, cmethod="KM", method="boot",u=12,m=50,B=1000) 
-cal3<-calibrate(f3, cmethod="KM", method="boot",u=36,m=50,B=1000) 
-cal5<-calibrate(f5, cmethod="KM", method="boot",u=60,m=50,B=1000) 
-
-
-pdf("calibration_compare.pdf",width = 5,height = 5)
-plot(cal1,lwd = 2,lty = 0,errbar.col = c("#2166AC"),subtitles = F,
-     bty = "l",
-     xlim = c(0,1),ylim= c(0,1),
-     xlab = "Nomogram-prediced OS (%)",ylab = "Observed OS (%)",
-     col = c("#2166AC"),
-     cex.lab=1.2,cex.axis=1, cex.main=1.2, cex.sub=0.6)
-lines(cal1[,c('mean.predicted',"KM")],
-      type = 'b', lwd = 1, col = c("#2166AC"), pch = 16)
-
-
-plot(cal3,lwd = 2,lty = 0,errbar.col = c("#B2182B"),subtitles = F,
-     xlim = c(0,1),ylim= c(0,1),col = c("#B2182B"),add = T)
-lines(cal3[,c('mean.predicted',"KM")],
-      type = 'b', lwd = 1, col = c("#B2182B"), pch = 16)
-
-abline(0,1, lwd = 2, lty = 3, col = c("#224444"))
-
-plot(cal5,lwd = 2,lty = 0,errbar.col = c("orange"),subtitles = F,
-     xlim = c(0,1),ylim= c(0,1),col = c("orange"),add = T)
-lines(cal5[,c('mean.predicted',"KM")],
-      type = 'b', lwd = 1, col = c("orange"), pch = 16)
-
-
-legend("bottomright", 
-       legend = c("1-year", "3-year","5-year"), 
-       col =c("#2166AC","#B2182B","orange"), 
-       lwd = 2,
-       cex = 1.5,
-       bty = "n")
-dev.off()
 
 ####### box plot compare risk group
 
@@ -383,7 +307,7 @@ res_meta<-iobr_cor_plot(pdata_group           = input_iobr,
                         index                 = 1,
                         category              = "signature",
                         signature_group       = (sig_group)[c(20)],
-                        ProjectID             = "GBM-MCP",
+                        ProjectID             = "cibersort",
                         
                         palette_box           = "jco",
                         palette_corplot       = "pheatmap",
