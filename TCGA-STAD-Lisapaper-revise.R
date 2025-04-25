@@ -61,11 +61,7 @@ dim(tcga_data)
 # Define the conditions to filter by
 colnames(colData(tcga_data))
 
-# Replace NAs with FALSE in the logical condition
-# subset_condition <- with(tcga_data@colData, 
-#                          ifelse(is.na(shortLetterCode), FALSE, 
-#                                 shortLetterCode == 'TP' & age_at_index < 50) | 
-#                            shortLetterCode == 'NT')
+
 stad <- subset(tcga_data, select = colData(tcga_data)$shortLetterCode == "TP"  | colData(tcga_data)$shortLetterCode == "NT")
 
 rownames(stad)<-(stad@rowRanges@elementMetadata$gene_name)
@@ -117,9 +113,8 @@ dim(res)
 df_res1<-na.omit(df_res1)
 
 
-#### take a list òf DEG
+#### take a list of DEG
 df_res_final<-df_res1[abs(df_res1$log2FoldChange)>1 & df_res1$padj<0.05,]
-#writexl::write_xlsx(df_res_final,path = 'TCGA_stad_DEG.xlsx')
 
 df_res_final1<-readxl::read_xlsx('TCGA_stad_DEG.xlsx')
 ###read DEG result
@@ -129,7 +124,6 @@ df_res_final1<-readxl::read_xlsx('TCGA_stad_DEG.xlsx')
 patients <- sample[sample$group=='Primary Tumor',]
 stad_tumor <- subset(stad, select = colData(stad)$shortLetterCode == "TP" )
 
-#selected_genes<- Reduce(intersect,list(common_genes,fibroblast_genes,metabolism))
 status <-stad_tumor$deceased
 
 
