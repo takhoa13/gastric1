@@ -29,13 +29,12 @@ data$tcga<-na.omit(data$tcga)
 #### preparation ####
 ##################################
 
-# result <- data.frame()
+
  est_dd <- data$tcga
 # 
 # val_data_list <- data
  selected_gene <- colnames(est_dd)[-c(1:2)]
-# val_dd_list <- lapply(val_data_list,function(x){x[,c('time','status',selected_gene),drop = FALSE]})
-# 
+
 
 
 
@@ -53,8 +52,6 @@ convert_to_numeric <- function(df) {
   })
   return(df)
 }
-# # Apply the conversion function to your training and validation data
-# est_dd <- convert_to_numeric(data$tcga)
 
 
 val_dd_list <- lapply(data, function(df) {
@@ -1731,17 +1728,6 @@ for (i in seq_along(data)) {
 
 
 
-  #######################
-##### 32, Stepcox + superPC
-#############################
-
-
-
-
-
-
-
-
 
 ##################################
 #### 34.StepCox+ gbm         ####
@@ -1836,8 +1822,6 @@ for (i in seq_along(data)) {
     ))
   }
 }
-
-
 
 
 ##################################
@@ -2115,15 +2099,10 @@ rid <- rownames(coef(fit, s = "lambda.min"))[which(coef(fit, s = "lambda.min") !
 est_dd2 <- est_dd[, c('time', 'status', rid)]
 val_dd_list2 <- lapply(val_dd_list, function(x) { x[, c('time', 'status', rid)] })
 
-# Fit RSF model using selected features from Enet
+# Fit RSF model using selected features 
 set.seed(seed)
 fit_rsf <- rfsrc(Surv(time,status) ~ ., data = est_dd2, ntree = 1000, nodesize = rf_nodesize,
                  splitrule = 'logrank', importance = TRUE, proximity = TRUE, forest = TRUE)
-
-  
-  
-
-
 
 
 # Extract variable importance
@@ -2276,41 +2255,10 @@ ROC <- timeROC(T=surv_data$time,
                times=c(1*12, 3*12,5*12),       
                iid=T,
                ROC=T)
-# Set the size of axis labels and ticks
-x_axis_size <- 1.5  # Change this to increase x-axis size
-y_axis_size <- 1.5  # Change this to increase y-axis size
-
-# Plot the ROC curve for different time points
-plot(ROC, 
-     time=1*12, 
-     col="red", 
-     lwd=2,
-     title = "")
-
-plot(ROC,
-     time=3*12, 
-     col="blue", 
-     add=TRUE, 
-     lwd=2)
-
-plot(ROC,
-     time=5*12, 
-     col="orange", 
-     add=TRUE, 
-     lwd=2)
-
-# Add the legend
-legend("bottomright",
-       c(paste0("AUC at 1 year: ", round(ROC[["AUC"]][1], 2)), 
-         paste0("AUC at 3 year: ", round(ROC[["AUC"]][2], 2)), 
-         paste0("AUC at 5 year: ", round(ROC[["AUC"]][3], 2))),
-       col=c("red", "blue", "orange"),
-       lty=1, 
-       lwd=1, 
-       bty = "n")
 
 
-##### Cach 2
+
+##### approach
 time_ROC_df <- data.frame(
   TP_1year = ROC$TP[, 1],
   FP_1year = ROC$FP[, 1],
@@ -2346,7 +2294,7 @@ ggplot(data = time_ROC_df) +
     axis.title.y = element_text(face = "bold", size = 14, color = "black", margin = margin(c(0, 15, 0, 0)))
   )
 
-################## save Risk score list for further clinical related analysis
 
-#saveRDS(risk_scores,file = 'risk_score_list_for_clinical.rds')  ## This is used for forestplot and nomogram, refer to "clinical_analysis_stad.R"
+
+#saveRDS(risk_scores,file = 'risk_score_list_for_clinical.rds')  
 
