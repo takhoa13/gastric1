@@ -28,10 +28,6 @@ library(R.utils)
 setwd('/home/lenovo/Documents/NCKH_Duy Tan/Gastric/')
 first_sample_folder <- list.dirs(recursive = FALSE)[1]
 
-  # Get the file paths for the count matrix and barcode files
-# Path to the folder containing the CSV files
-#sample_folder <- "path/to/your/folder"  # Update this with your folder path
-
 # List all CSV files in the folder
 count_matrix_file <- list.files(sample_folder, pattern = "\\.csv$", full.names = TRUE)
 
@@ -292,7 +288,7 @@ FeaturePlot(merged_seurat_filtered, reduction = 'umap', features = c('REG4','ACK
 Idents(merged_seurat_filtered) <- "seurat_clusters"
 DefaultAssay(merged_seurat_filtered) <- "RNA"
 markers.list = FindAllMarkers(merged_seurat_filtered,logfc.threshold = 0.5,test.use = "wilcox",only.pos = T)
-writexl::write_xlsx(markers.list,path = 'DEG183904_new.xlsx')
+
 cluster_annotations <- list(
   '0' = 'Lymphocyte',
   '1' = 'Plasma cell',
@@ -300,7 +296,7 @@ cluster_annotations <- list(
   '3' = 'Macrophage',
   '4' = 'Epithelial cell',
   '5' = 'Endothelial cell',
-  '6' = 'Fibroblast', # ASC / Neuron / ODC markers all present,
+  '6' = 'Fibroblast', 
   '7' = 'Fibroblast',
   '8' = 'B cell',
   '9' = 'Mast cell',
@@ -352,8 +348,7 @@ ht5 <- GroupHeatmap(merged_seurat_filtered,
                     heatmap_palette = "YlOrRd",cell_split_palette = "Set3",
                     cell_annotation = c("gender", "location"), cell_annotation_palette = c("Set3", "Paired"),
                     cell_annotation_params = list(width = unit(10, "mm")),
-                   # feature_annotation = c("TF", "CSPA"),
-                   # feature_annotation_palcolor = list(c("gold", "steelblue"), c("forestgreen")),
+                 
                     add_dot = TRUE, add_bg = TRUE, add_reticle = TRUE,
                     flip = T, column_title_rot = 45, nlabel = 0, show_row_names = T,show_column_names = T
 )
@@ -415,7 +410,7 @@ print(ht$plot)
 
 
 
-###### Addmodule score (using the positive genes list from machine_gastric.R)
+###### Addmodule score 
 list_input<-readRDS('list_overalap_meta_caf.rds')
 
 merged_seurat_filtered <- AddModuleScore(object = merged_seurat_filtered, features =list_input, name = "meta_list")
@@ -424,10 +419,6 @@ VlnPlot(merged_seurat_filtered, features = "meta_list1", pt.size = 0,
         group.by = "celltype", cols = RColorBrewer::brewer.pal(n = length(unique(merged_seurat_filtered$celltype)), "Set3")) +
   geom_boxplot(width = 0.1, outlier.shape = NA) +  # Add boxplots without outliers
   stat_kruskal_test()
-
-FeaturePlot(object = merged_seurat_filtered, features ='meta_list1')#+
-scale_colour_gradientn(colours = rev(brewer.pal(n = 5, name = "RdBu")))
-
 
 
 ############
