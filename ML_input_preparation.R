@@ -41,7 +41,7 @@ input<-list('tcga'=tcga,
 metabolism<-unlist(signature_metabolism)
 
 
-#saveRDS(input,file = 'input_ML_4dataframes.RDS')
+
 
 
 ### take a list of DEG of fibroblast (or other cell type) from single cell dataset
@@ -49,7 +49,6 @@ markers.list<-readxl::read_xlsx('caf_marker.xlsx')
 markers.list<-as.data.frame(markers.list)
 fibroblast_genes <- markers.list[markers.list$cluster == 'CAF_6', "gene"]
 
-#list_overlap<-Reduce(intersect,list(common_genes,df_res_final$Gene,metabolism)) #### DEG with log2fc>1 TCGA dataset
 
 list_overlap<-Reduce(intersect,list(common_genes,fibroblast_genes,metabolism)) #### DEG with log2fc>1 TCGA dataset
 saveRDS(list_overlap,file = 'list_overalap_meta_caf.rds')
@@ -57,7 +56,7 @@ saveRDS(list_overlap,file = 'list_overalap_meta_caf.rds')
 
 list_overlap_uni<-c('time','status',selected_genes_stad_tcga) # refer to TCGA-STAD-new.R
 
-#input<-readRDS('input_ML_5dataframes.RDS')
+
 
 ##### subset the input
 
@@ -70,7 +69,7 @@ subset_input$tcga$time<-round(subset_input$tcga$time/30)
 saveRDS(subset_input,file = 'subset_input_ML_dataframes_after_univariate.RDS')
 
 
-#This is the input for 'Machine_gastric.R
+
 
 
 
