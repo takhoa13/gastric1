@@ -87,7 +87,7 @@ R packages (tested versions in parentheses):
 
 ---
 
-##  Step by Step
+##  Step by step
 
 ### Single-cell analysis
 - **Script:** `gse183904_gastric_SINGLECELL.R`  
