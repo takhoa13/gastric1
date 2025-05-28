@@ -83,15 +83,27 @@ R packages (tested versions in parentheses):
 
 ---
 
-##  Step by step
-**Single-cell analysis**
-`gse183904_gastric_SINGLECELL.R` refers to Figure 1 and Figure 2
-**Bulk & DE analysis**
-`ML_input_preparation.R` refers to the preparation steps for bulk analysis
-**Machine learning and establishing MRS**
-`TCGA-STAD-Lisapaper-revise.R` refers to Figure 3A
-`Machine_gastric_loocv.R` refers to Figure 3B, 3C, 3D
-**Evaluation of MRS performance**
-`Machine_gastric_loocv.R` refers to Figure 4A-F
-`forestplot_nomogram_clinical.R` refers to Figure 4G-J and Figure 5
-`MAF_file_gastric.R` refers to Figure 6
+## Step by Step
+
+### Single-cell analysis
+- **Script:** `gse183904_gastric_SINGLECELL.R`  
+  _Generates Figures 1 and 2_
+
+### Bulk & DE analysis
+- **Script:** `ML_input_preparation.R`  
+  _Prepares inputs for bulk RNA-seq and microarray analysis_
+
+### Machine learning & MRS construction
+- **Script:** `TCGA-STAD-Lisapaper-revise.R`  
+  _Generates Figure 3A_
+- **Script:** `Machine_gastric_loocv.R`  
+  _Generates Figures 3B, 3C, 3D_
+
+### Evaluation of MRS performance
+- **Script:** `Machine_gastric_loocv.R`  
+  _Generates Figures 4A–4F_
+- **Script:** `forestplot_nomogram_clinical.R`  
+  _Generates Figures 4G–4J and 5_
+- **Script:** `MAF_file_gastric.R`  
+  _Generates Figure 6_
+
