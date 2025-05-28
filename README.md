@@ -48,3 +48,24 @@ High-quality, reproducible analyses with minimal manual downloads.
 ```
 ---
 ##  Prerequisites
+R ≥ 4.1.0
+
+R packages (tested versions in parentheses):
+
+Bulk & DE analysis:
+
+TCGAbiolinks (2.24.4), DESeq2 (1.36.0), limma (3.54.0), edgeR (3.38.4)
+
+Survival & ML:
+
+survival (3.5-5), survminer (0.4.9), glmnet (4.1-6), randomForestSRC (2.12.1), CoxBoost (1.5.2)
+
+Single-cell:
+
+Seurat (4.3.0), harmony (0.1.0)
+
+Visualization & utilities:
+
+ggplot2, dplyr, tidyverse, rms (6.7-0), nomogramEx, regplot, forplo
+
+Tip: use renv::snapshot() / renv::restore() for environment reproducibility.
