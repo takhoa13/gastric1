@@ -9,7 +9,7 @@
 - [About](#about)  
 - [Repository Structure](#repository-structure)  
 - [Prerequisites](#prerequisites)   
-- [Scripts](#scripts)  
+- [Step by step](#scripts)  
 - [Contributing](#contributing)  
 - [Contact](#contact)  
 
@@ -81,3 +81,17 @@ R packages (tested versions in parentheses):
 - `tidyverse` (2.0.0)  
 - `timeROC` (0.4)  
 
+---
+
+##  Step by step
+**Single-cell analysis**
+`gse183904_gastric_SINGLECELL.R` refers to Figure 1 and Figure 2
+**Bulk & DE analysis**
+`ML_input_preparation.R` refers to the preparation steps for bulk analysis
+**Machine learning and establishing MRS**
+`TCGA-STAD-Lisapaper-revise.R` refers to Figure 3A
+`Machine_gastric_loocv.R` refers to Figure 3B, 3C, 3D
+**Evaluation of MRS performance**
+`Machine_gastric_loocv.R` refers to Figure 4A-F
+`forestplot_nomogram_clinical.R` refers to Figure 4G-J and Figure 5
+`MAF_file_gastric.R` refers to Figure 6
