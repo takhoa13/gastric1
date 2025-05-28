@@ -37,6 +37,7 @@ High-quality, reproducible analyses with minimal manual downloads.
 
 
 
+--- 
 
 ##  Repository Structure
 
@@ -50,7 +51,7 @@ High-quality, reproducible analyses with minimal manual downloads.
 |   └── MAF_file_gastric.R
 └── README.md
 ```
-
+---
 ##  Prerequisites
 R ≥ 4.1.0
 
@@ -85,7 +86,7 @@ R packages (tested versions in parentheses):
 - `tidyverse` (2.0.0)  
 - `timeROC` (0.4)  
 
-
+---
 ##  Step by step
 
 ### Single-cell analysis
