@@ -9,9 +9,7 @@
 - [About](#about)  
 - [Repository Structure](#repository-structure)  
 - [Prerequisites](#prerequisites)   
-- [Step by step](#scripts)  
-- [Contributing](#contributing)  
-- [Contact](#contact)  
+- [Step by step](#scripts)
 
 ---
 
@@ -35,7 +33,7 @@ High-quality, reproducible analyses with minimal manual downloads.
 
 ---
 
-## 🗂️ Repository Structure
+##  Repository Structure
 
 ```text
 ├── scripts/
@@ -83,7 +81,7 @@ R packages (tested versions in parentheses):
 
 ---
 
-## Step by Step
+##  Step by Step
 
 ### Single-cell analysis
 - **Script:** `gse183904_gastric_SINGLECELL.R`  
@@ -106,4 +104,4 @@ R packages (tested versions in parentheses):
   _Generates Figures 4G–4J and 5_
 - **Script:** `MAF_file_gastric.R`  
   _Generates Figure 6_
-
+---
