@@ -17,16 +17,21 @@
 
 This pipeline performs:
 
-1. **Bulk RNA-seq (TCGA-STAD)**  
-   - Differential expression analysis & Cox regression.
-2. **Microarray (GEO)**  
-   - Integration of multiple GEO series, feature selection.
+1. **Single-cell RNA-seq**  
+   - Identification of CAF clusters with high expression of metabolic signatures.
+
+2. **Bulk analysis**  
+   - Integration of multiple GEO series and TCGA-STAD data.
+
 3. **Machine Learning**  
-   - Leave-one-out cross-validation of Cox-based and tree-based survival models.
-4. **Single-cell RNA-seq**  
-   - QC, integration (Seurat + Harmony), clustering.
-5. **Visualization**  
-   - Forest plots and nomograms for clinical variables and risk scores.
+   - Leave-one-out cross-validation of Cox-based and survival models to establish MRS.
+
+4. **Evaluation of MRS**  
+   - Generation of forest plots and nomograms for clinical variables and risk scores.
+
+5. **Somatic mutation**  
+   - Extraction of MAF files to stratify patients by MRS.
+
 
 High-quality, reproducible analyses with minimal manual downloads.
 
@@ -42,6 +47,7 @@ High-quality, reproducible analyses with minimal manual downloads.
 │   ├── Machine_gastric_loocv.R
 │   ├── gse183904_gastric_SINGLECELL.R
 │   └── forestplot_nomogram_clinical.R
+|   └── MAF_file_gastric.R
 └── README.md
 ```
 ---
