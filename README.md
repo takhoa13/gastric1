@@ -52,20 +52,32 @@ R ≥ 4.1.0
 
 R packages (tested versions in parentheses):
 
-Bulk & DE analysis:
+- `circlize` (0.4.16)  
+- `clusterProfiler` (4.14.3)  
+- `dbplyr` (2.5.0)  
+- `DESeq2` (1.46.0)  
+- `dplyr` (1.1.4)  
+- `fgsea` (1.32.0)  
+- `GenomeInfoDb` (1.42.0)  
+- `ggplot2` (3.5.1)  
+- `GSVA` (2.0.1)  
+- `igraph` (2.1.1)  
+- `IOBR` (0.99.0)  
+- `maftools` (2.22.0)  
+- `magick` (2.8.5)  
+- `Matrix` (1.7-1)  
+- `patchwork` (1.3.0)  
+- `pheatmap` (1.0.12)  
+- `plyr` (1.8.9)  
+- `R.utils` (2.12.3)  
+- `RColorBrewer` (1.1-3)  
+- `sessioninfo` (1.2.2)  
+- `Seurat` (5.1.0)  
+- `SummarizedExperiment` (1.36.0)  
+- `survival` (3.7-0)  
+- `survminer` (0.5.0)  
+- `TCGAbiolinks` (2.34.0)  
+- `tidyHeatmap` (1.8.1)  
+- `tidyverse` (2.0.0)  
+- `timeROC` (0.4)  
 
-TCGAbiolinks (2.24.4), DESeq2 (1.36.0), limma (3.54.0), edgeR (3.38.4)
-
-Survival & ML:
-
-survival (3.5-5), survminer (0.4.9), glmnet (4.1-6), randomForestSRC (2.12.1), CoxBoost (1.5.2)
-
-Single-cell:
-
-Seurat (4.3.0), harmony (0.1.0)
-
-Visualization & utilities:
-
-ggplot2, dplyr, tidyverse, rms (6.7-0), nomogramEx, regplot, forplo
-
-Tip: use renv::snapshot() / renv::restore() for environment reproducibility.
