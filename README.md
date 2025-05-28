@@ -1,6 +1,6 @@
 # <Integrative multi-omics and machine learning approaches uncover a novel metabolic-related signature associated with cancer-associated fibroblasts in gastric cancer development>
 
-> **One-sentence summary:** <Short description of what this project does>
+> **Paper title:** <Integrative multi-omics and machine learning approaches uncover a novel metabolic-related signature associated with cancer-associated fibroblasts in gastric cancer development>
 
 ---
 
