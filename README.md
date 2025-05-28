@@ -9,7 +9,7 @@
 - [About](#about)  
 - [Repository Structure](#repository-structure)  
 - [Prerequisites](#prerequisites)   
-- [Step by step](#scripts)
+- [Step by step](#stepbystep)
 
 ---
 
@@ -86,7 +86,6 @@ R packages (tested versions in parentheses):
 - `timeROC` (0.4)  
 
 ---
-
 ##  Step by step
 
 ### Single-cell analysis
